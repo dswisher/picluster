@@ -1,0 +1,47 @@
+---
+- name: JDK8 | Get JDK tarball (as tar.gz file)
+  get_url:
+   url:     "{{ jdk_tarball_url }}"
+   headers: 'Cookie:oraclelicense=accept-securebackup-cookie'
+   dest: "{{ default_download_directory }}/{{ jdk_tarball_file }}.tar.gz"
+   mode: 0666
+
+- name: JDK8 | Remove {{ default_download_directory }}/{{ jdk_tarball_directory }}
+  file:
+    state: absent
+    path: "{{ default_download_directory }}/{{ jdk_tarball_directory }}"
+  become: true
+
+- name: JDK8 | Remove /usr/lib/jvm
+  file:
+    state: absent
+    path: "/usr/lib/jvm"
+  become: true
+
+- name: JDK8 | Unarchive tar ball
+  command: "chdir={{ default_download_directory }} tar -zxvf {{ default_download_directory }}/{{ jdk_tarball_file }}.tar.gz"
+  become: true
+
+- name: JDK8 | Move jdk folder to bar /usr/lib/jvm
+  command: "mv {{ default_download_directory }}/{{ jdk_tarball_directory }} /usr/lib/jvm"
+  become: true
+
+- name: JDK8 | Update alternatives install {{item}}
+  command: update-alternatives --install /usr/bin/{{item}} {{item}} /usr/lib/jvm/bin/{{item}} 1
+  with_items:
+   - javac
+   - java
+  become: true
+
+- name: JDK8 | Update alternatives configure {{item}}
+  command: update-alternatives --config {{item}}
+  with_items:
+    - javac
+    - java
+  become: true
+
+- lineinfile:
+    path: /etc/environment
+    line: 'JAVA_HOME="{{ java_home_directory }}"'
+  become: true
+
