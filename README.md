@@ -26,7 +26,6 @@ From now on, we'll use `ansible` to do all the work, so we'll be running on the 
 
 * Switch jdk8 role to use the [unarchive](http://docs.ansible.com/ansible/latest/unarchive_module.html) module
 * Initialize personal user on each box, complete with dothome goodness
-* Set up static IPs for each host, with hostnames - see [here](https://github.com/geerlingguy/raspberry-pi-dramble/tree/master/setup/networking)
 
 # Links
 

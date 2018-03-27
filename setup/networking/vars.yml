@@ -1,0 +1,25 @@
+---
+# Mapping of what hardware MAC addresses should be configured with specific IPs.
+mac_address_mapping:
+  "b8:27:eb:0a:72:87":
+    name: pi00
+    ip: "192.168.1.50"
+
+  "b8:27:eb:51:05:f8":
+    name: pi01
+    ip: "192.168.1.51"
+
+  "b8:27:eb:c7:4a:31":
+    name: pi02
+    ip: "192.168.1.52"
+
+  "b8:27:eb:a0:39:a8":
+    name: pi03
+    ip: "192.168.1.53"
+
+
+# Nameservers to use in resolv.conf.
+dns_nameservers:
+  - "192.168.1.1"
+  - "8.8.8.8"
+
