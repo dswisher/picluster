@@ -11,4 +11,10 @@ jdk_alternative_items:
   - jar
   - java
   - javac
+  - jcmd
+  - jmap
+  - jps
+  - jstack
+  - jstat
+  - jstatd
 
