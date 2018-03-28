@@ -1,7 +1,7 @@
 ---
 - name: JDK8 | Install
   block:
+    - include: 01_check.yml
     - include: 02_fetchjdk.yml
     - include: 04_installjdk.yml
-
 

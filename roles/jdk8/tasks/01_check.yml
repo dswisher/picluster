@@ -1,0 +1,7 @@
+---
+
+- name: 'JDK8 | Check if Oracle JDK is already installed at {{ jdk_home }}'
+  stat:
+    path:   '{{ jdk_home }}'
+  register: java_home_check
+

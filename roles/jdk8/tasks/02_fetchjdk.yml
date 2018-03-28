@@ -14,10 +14,13 @@
       get_url:
         url:      '{{ jdk_dl_url }}'
         headers:  '{{ jdk_dl_cookie }}'
+        checksum: '{{ jdk_dl_checksum }}'
         dest:     '{{ jdk_dl_dir }}/'
       register: dl_result
 
     - name: 'JDK8 || Set fact to absolute path of downloaded JDK archive'
       set_fact:
         jdk_dl_artifact_path: '{{ dl_result.dest }}'
+
+  when: java_home_check.stat.exists == false
 

@@ -3,6 +3,7 @@ jdk_dl_dir: /tmp/jdk
 jdk_dl_cookie: 'Cookie:oraclelicense=accept-securebackup-cookie'
 jdk_dl_file: jdk-8u161-linux-arm32-vfp-hflt
 jdk_dl_url: http://download.oracle.com/otn-pub/java/jdk/8u161-b12/2f38c3b165be4555a1fa6e98c45e0808/{{ jdk_dl_file }}.tar.gz
+jdk_dl_checksum: 'sha256:fd2881e01be04e52a7389e8458c794b0580997df4d1142eefb707468a9e0cf56'
 
 jdk_home: /opt/java/jdk8_161
 
