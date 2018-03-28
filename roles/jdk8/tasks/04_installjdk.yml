@@ -1,0 +1,43 @@
+---
+
+- name: 'JDK8 | Check if Oracle JDK is already installed at {{ jdk_home }}'
+  stat:
+    path:   '{{ jdk_home }}'
+  register: java_home_check
+
+
+- name: 'JDK8 | Install JDK artifacts'
+  block:
+
+    - name: 'JDK8 || Copy and extract JDK archive'
+      when: java_home_check.stat.exists == false
+      block:
+
+        - name: 'JDK8 ||| Create JDK base root directory at {{ jdk_home }}'
+          file:
+            path:   '{{ jdk_home }}'
+            state:  directory
+
+        - name: 'JDK8 ||| Extract JDK archive to {{ jdk_home }}'
+          unarchive:
+            src:        '{{ jdk_dl_artifact_path }}'
+            dest:       '{{ jdk_home }}'
+            extra_opts: ['--strip-components=1']
+
+      become: true
+
+
+    - name: 'JDK8 || Set JAVA_HOME'
+      lineinfile:
+        path: /etc/environment
+        line: 'JAVA_HOME="{{ jdk_home }}"'
+      become: true
+
+    - name: 'JDK8 || Update alternatives'
+      alternatives:
+        name:     '{{ item }}'
+        link:     '/usr/bin/{{ item }}'
+        path:     '{{ jdk_home }}/bin/{{ item }}'
+      with_items: '{{ jdk_alternative_items }}'
+      become: true
+

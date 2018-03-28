@@ -1,0 +1,23 @@
+---
+
+- name: JDK8 | download artifacts
+  delegate_to: 127.0.0.1
+  run_once: true
+  block:
+
+    - name: 'JDK8 || Create temp directory at {{ jdk_dl_dir }} | 127.0.0.1'
+      file:
+        path:   '{{ jdk_dl_dir }}'
+        state:  directory
+
+    - name: 'JDK8 || Download JDK to temp directory | 127.0.0.1'
+      get_url:
+        url:      '{{ jdk_dl_url }}'
+        headers:  '{{ jdk_dl_cookie }}'
+        dest:     '{{ jdk_dl_dir }}/'
+      register: dl_result
+
+    - name: 'JDK8 || Set fact to absolute path of downloaded JDK archive'
+      set_fact:
+        jdk_dl_artifact_path: '{{ dl_result.dest }}'
+
