@@ -1,5 +1,5 @@
 ---
-- name: JDK8 | Install
+- name: Hadoop | Install
   block:
     - include: 01_check.yml
     - include: 02_fetch.yml

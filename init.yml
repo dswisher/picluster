@@ -1,0 +1,5 @@
+---
+- hosts: pi3s
+  roles:
+    - swish
+

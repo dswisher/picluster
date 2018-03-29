@@ -1,5 +1,6 @@
 ---
 - hosts: testee
   roles:
-    - jdk8
+      #    - jdk8
+    - hadoop
 

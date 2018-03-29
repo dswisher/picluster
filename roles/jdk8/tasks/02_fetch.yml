@@ -15,7 +15,7 @@
         url:      '{{ jdk_dl_url }}'
         headers:  '{{ jdk_dl_cookie }}'
         checksum: '{{ jdk_dl_checksum }}'
-        dest:     '{{ jdk_dl_dir }}/'
+        dest:     '{{ jdk_dl_dir }}/{{ jdk_dl_file }}.tar.gz'
       register: dl_result
 
     - name: 'JDK8 || Set fact to absolute path of downloaded JDK archive'

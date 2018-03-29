@@ -1,0 +1,25 @@
+---
+
+- name: swish | install handy stuff
+  apt: name={{item}} state=present
+  with_items:
+    - git
+    - tmux
+    - zsh
+  become: true
+
+
+- name: swish | create account
+  user:
+    name: swish
+    shell: /bin/zsh
+  become: true
+
+
+- name: swish | set authorized key
+  authorized_key:
+    user: swish
+    state: present
+    key: "{{ lookup('file', '/home/swish/.ssh/id_rsa.pub') }}"
+  become: true
+

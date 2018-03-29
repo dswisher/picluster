@@ -1,0 +1,17 @@
+---
+
+hadoop_dl_dir: /tmp/hadoop
+
+# hadoop_name: hadoop-2.7.5
+# hadoop_dl_checksum: 'sha256:0BFC4D9B04BE919BE2FDF36F67FA3B4526CDBD406C512A7A1F5F1B715661F831'
+
+hadoop_name: hadoop-2.9.0
+hadoop_dl_checksum: 'sha256:8D48666F29F9ADE6ED2762B7A9EDAB177BAD2C57396F43D0FFD6A269D54F6FE1'
+
+# hadoop_name: hadoop-3.0.1
+# hadoop_dl_checksum: 'sha256:DA79BA1AC659538982604C3DA94DA50621399F85FB74DA4A9037FEAE1DBD920C'
+
+hadoop_dl_url: http://apache.cs.utah.edu/hadoop/common/{{ hadoop_name }}/{{ hadoop_name }}.tar.gz
+
+hadoop_home: /opt/hadoop/{{ hadoop_name }}
+

@@ -1,0 +1,25 @@
+---
+
+- name: Hadoop | download artifacts
+  delegate_to: 127.0.0.1
+  run_once: true
+  block:
+
+    - name: 'Hadoop || Create temp directory at {{ hadoop_dl_dir }} | 127.0.0.1'
+      file:
+        path:   '{{ hadoop_dl_dir }}'
+        state:  directory
+
+    - name: 'Hadoop || Download archive to temp directory | 127.0.0.1'
+      get_url:
+        url:      '{{ hadoop_dl_url }}'
+        checksum: '{{ hadoop_dl_checksum }}'
+        dest:     '{{ hadoop_dl_dir }}/{{ hadoop_name }}.tar.gz'
+      register: dl_result
+
+    - name: 'Hadoop || Set fact to absolute path of downloaded archive'
+      set_fact:
+        hadoop_dl_artifact_path: '{{ dl_result.dest }}'
+
+  when: hadoop_home_check.stat.exists == false
+

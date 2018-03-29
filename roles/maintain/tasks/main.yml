@@ -1,0 +1,14 @@
+---
+
+- name: maintain | update apt packages
+  become: true
+  block:
+
+    - name: maintain | apt | update apt repository cache
+      apt:
+        update_cache: yes
+
+    - name: maintain | apt | upgrade apt packages
+      apt:
+        upgrade: dist
+

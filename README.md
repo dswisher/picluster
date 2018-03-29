@@ -21,6 +21,7 @@ From now on, we'll use `ansible` to do all the work, so we'll be running on the 
 * Upgrade packages: `ansible-playbook generic/apt-upgrade.yml`
 * Ping: `ansible all -m ping`
 * Shutdown: `ansible all --args "/sbin/shutdown -h now" -s`
+* Maintenance: `ansible-playbook maint.yml`  (upgrades apt packages, etc)
 
 # TODO
 

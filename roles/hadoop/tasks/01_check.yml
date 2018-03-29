@@ -1,0 +1,7 @@
+---
+
+- name: 'Hadoop | Check if Hadoop is already installed at {{ hadoop_home }}'
+  stat:
+    path:   '{{ hadoop_home }}'
+  register: hadoop_home_check
+
