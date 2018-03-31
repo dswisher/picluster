@@ -3,3 +3,11 @@
   roles:
     - swish
 
+  vars_prompt:
+    - name: "swish_password"
+      prompt: "password for 'swish'"
+      private: yes
+      encrypt: "sha512_crypt"
+      confirm: yes
+      salt_size: 7
+
