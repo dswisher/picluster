@@ -20,13 +20,8 @@ From now on, we'll use `ansible` to do all the work, so we'll be running on the 
 * Edit the `inventory` file to match your systems.
 * Upgrade packages: `ansible-playbook generic/apt-upgrade.yml`
 * Ping: `ansible all -m ping`
-* Shutdown: `ansible all --args "/sbin/shutdown -h now" -s`
+* Shutdown: `ansible-playbook shutdown.yml`
 * Maintenance: `ansible-playbook maint.yml`  (upgrades apt packages, etc)
-
-# TODO
-
-* Switch jdk8 role to use the [unarchive](http://docs.ansible.com/ansible/latest/unarchive_module.html) module
-* Initialize personal user on each box, complete with dothome goodness
 
 # Links
 
