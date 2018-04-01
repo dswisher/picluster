@@ -3,12 +3,10 @@ pi00
 pi01
 pi02
 pi03
+oldpi
 
 [control]
 localhost ansible_connection=local
-
-[pi1s]
-192.168.1.124
 
 [pi3s]
 pi00

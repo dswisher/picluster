@@ -1,6 +1,5 @@
 ---
 
-
 - name: swish | make sure some useful things are installed
   apt: name={{item}} state=present
   with_items:
@@ -26,4 +25,40 @@
     state: present
     key: "{{ lookup('file', '/home/swish/.ssh/id_rsa.pub') }}"
   become: true
+
+
+- name: swish | set up dothome
+  block:
+
+    - name: swish || make dothome dir
+      file:
+        name: /home/swish/dothome
+        state: directory
+        owner: swish
+        group: swish
+
+    - name: swish || fetch dothome tarball
+      get_url:
+        url: https://github.com/dswisher/dothome/tarball/master
+        dest: "{{ dothome_dl_dest }}"
+
+    # TODO - pull from master?
+    - name: swish || unpack tarball
+      unarchive:
+        remote_src: true
+        src: "{{ dothome_dl_dest }}"
+        dest: /home/swish/dothome
+        owner: swish
+        group: swish
+        extra_opts: ['--strip-components=1']
+
+    - name: swish || clone vundle
+      git:
+        repo: https://github.com/gmarik/Vundle.vim.git
+        dest: /home/swish/.vim/bundle/Vundle.vim
+
+  become: true
+
+  tags:
+    - dothome
 

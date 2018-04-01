@@ -17,6 +17,9 @@ mac_address_mapping:
     name: pi03
     ip: "192.168.1.53"
 
+  "b8:27:eb:a3:be:ca":
+    name: oldpi
+    ip: "192.168.1.80"
 
 # Nameservers to use in resolv.conf.
 dns_nameservers:
