@@ -3,6 +3,7 @@ pi00
 pi01
 pi02
 pi03
+pi04
 oldpi
 
 [control]
@@ -13,6 +14,7 @@ pi00
 pi01
 pi02
 pi03
+pi04
 
 [testee]
 pi00

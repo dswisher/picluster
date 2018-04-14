@@ -17,11 +17,15 @@ First, configure the hosts.
 
 From now on, we'll use `ansible` to do all the work, so we'll be running on the control machine.
 
-* Edit the `inventory` file to match your systems.
-* Upgrade packages: `ansible-playbook generic/apt-upgrade.yml`
+* Set up networking: [README](setup/networking/README.md)
+* Edit the `inventory` file to match your systems, specifically the `pi3s` group. Add new hostname to local `/etc/hosts` file.
+* Maintenance: `ansible-playbook maint.yml`  (upgrades apt packages, etc)
+* Install my stuff: `ansible-playbook swish.yml`
+
+# Useful Tips
+
 * Ping: `ansible all -m ping`
 * Shutdown: `ansible-playbook shutdown.yml`
-* Maintenance: `ansible-playbook maint.yml`  (upgrades apt packages, etc)
 
 # Links
 

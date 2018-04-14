@@ -1,5 +1,5 @@
 ---
-- hosts: pi3s
+- hosts: pi3s oldpi
   gather_facts: no
   tasks:
     - name: shutdown
